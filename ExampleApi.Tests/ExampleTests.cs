@@ -1,20 +1,27 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using AspTestFramework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ExampleApi.Tests
 {
     [TestClass]
     public class ExampleTests
     {
+        private readonly Browser<Program> _browser;
+
         public ExampleTests()
         {
+            _browser = new Browser<Program>();
         }
 
         [TestMethod]
-        public Task ExampleEndpoint_WithvalidRequest_ReturnsValue()
+        public async Task ExampleEndpoint_WithvalidRequest_ReturnsValue()
         {
-            Assert.IsTrue(false);
+            var response = await _browser.CreateRequest("/api/v1/example")
+                                         .GetAsync();
 
-            return Task.FromResult(true);
+            var message = response.Content.ReadAsStringAsync();
+
+            Assert.IsTrue(response.IsSuccessStatusCode);
         }
     }
 }
