@@ -61,11 +61,11 @@ namespace AspTestFramework.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} cannot be null..
+        ///   Looks up a localized string similar to {0} is not registered.  Ensure the dependency is registered in the applications container during startup..
         /// </summary>
-        internal static string NullArgumentFormat {
+        internal static string DependencyNotRegisteredFormat {
             get {
-                return ResourceManager.GetString("NullArgumentFormat", resourceCulture);
+                return ResourceManager.GetString("DependencyNotRegisteredFormat", resourceCulture);
             }
         }
     }

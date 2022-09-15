@@ -1,5 +1,7 @@
 ﻿using AspTestFramework;
+using ExampleApi.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 
 namespace ExampleApi.Tests
 {
@@ -7,10 +9,14 @@ namespace ExampleApi.Tests
     public class ExampleTests
     {
         private readonly Browser<Program> _browser;
+        private readonly Mock<IExampleService> _serviceMock = new Mock<IExampleService>();
 
         public ExampleTests()
         {
-            _browser = new Browser<Program>();
+            _serviceMock.Setup(m => m.GetExampleText())
+                        .Returns("TestText!");
+
+            _browser = new Browser<Program>(c => c.UseDependency(_serviceMock.Object));
         }
 
         [TestMethod]

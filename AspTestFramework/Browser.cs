@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.Testing;
+using System;
 using System.Net.Http;
 
 namespace AspTestFramework
@@ -8,12 +9,16 @@ namespace AspTestFramework
     {
         private readonly HttpClient _client;
 
-        public Browser()
+        public Browser(Action<IServiceConfigurator> action)
         {
             var application = new WebApplicationFactory<TProgram>()
                                     .WithWebHostBuilder(builder =>
                                     {
-                                        builder.ConfigureServices(services => { });
+                                        builder.ConfigureServices(services =>
+                                        {
+                                            var configurator = new ServiceConfigurator(services);
+                                            action.Invoke(configurator);
+                                        });
                                     }); 
 
             _client = application.CreateClient();
