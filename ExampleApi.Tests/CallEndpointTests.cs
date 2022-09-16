@@ -14,7 +14,6 @@ namespace ExampleApi.Tests
 
         private readonly string _testText = "TestText!";
 
-
         [TestMethod]
         public async Task CallExampleEndpoint_WithValidRequest_Succeeds()
         {
@@ -42,7 +41,7 @@ namespace ExampleApi.Tests
         public async Task CallExampleEndpoint_WithPutRequest_Succeeds()
         {
             var browser = new Browser<Program>(c => { });
-            var request = PutRequest.Example();
+            var request = Request.Example();
             var json = JsonSerializer.Serialize(request);
 
             var response = await browser.CreateRequest("/api/v1/example")
@@ -51,6 +50,33 @@ namespace ExampleApi.Tests
 
             var message = await response.Content.ReadAsStringAsync();
             Assert.AreEqual(request.StringToReturn, message);
+        }
+
+        [TestMethod]
+        public async Task CallExampleEndpoint_WithPostRequest_Succeeds()
+        {
+            var browser = new Browser<Program>(c => { });
+            var request = Request.Example();
+            var json = JsonSerializer.Serialize(request);
+
+            var response = await browser.CreateRequest("/api/v1/example")
+                                        .WithJsonContent(json)
+                                        .PostAsync();
+
+            var message = await response.Content.ReadAsStringAsync();
+            Assert.AreEqual(request.StringToReturn, message);
+        }
+
+        [TestMethod]
+        public async Task CallExampleEndpoint_WithDeleteRequest_ReturnsDependencyValue()
+        {
+            _mock.Setup(m => m.GetExampleText()).Returns(_testText);
+            var browser = new Browser<Program>(c => c.UseDependency(_mock.Object));
+
+            var response = await browser.CreateRequest("/api/v1/example").DeleteAsync();
+            var message = await response.Content.ReadAsStringAsync();
+
+            Assert.AreEqual(_testText, message);
         }
     }
 }

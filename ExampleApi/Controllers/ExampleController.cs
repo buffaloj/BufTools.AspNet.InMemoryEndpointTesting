@@ -22,15 +22,15 @@ namespace ExampleApi.Controllers
         }
 
         [HttpPut("example")]
-        public IActionResult Put(PutRequest request)
+        public IActionResult Put(Request request)
         {
             return Ok(request.StringToReturn);
         }
 
         [HttpPost("example")]
-        public IActionResult Post()
+        public IActionResult Post(Request request)
         {
-            return Ok(_exampleService.GetExampleText());
+            return Ok(request.StringToReturn);
         }
 
         [HttpDelete("example")]

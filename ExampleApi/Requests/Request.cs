@@ -1,12 +1,12 @@
 ﻿namespace ExampleApi.Requests
 {
-    public class PutRequest
+    public class Request
     {
         public string StringToReturn {  get; set; }
 
-        public static PutRequest Example()
+        public static Request Example()
         {
-            return new PutRequest
+            return new Request
             {
                 StringToReturn = "An example request string"
             };
