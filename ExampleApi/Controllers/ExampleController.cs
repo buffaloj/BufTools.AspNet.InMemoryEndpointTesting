@@ -1,4 +1,5 @@
 using ExampleApi.Requests;
+using ExampleApi.Responses;
 using ExampleApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,9 +17,15 @@ namespace ExampleApi.Controllers
         }
 
         [HttpGet("example")]
-        public IActionResult Get()
+        public IActionResult Get(string? stringParam, int? intParam, float? floatParam)
         {
-            return Ok(_exampleService.GetExampleText());
+            return Ok(new Response
+                          {
+                              ReturnString = _exampleService.GetExampleText(),
+                              StringParam = stringParam,
+                              IntParam = intParam,
+                              FloatParam = floatParam
+                          });
         }
 
         [HttpPut("example")]

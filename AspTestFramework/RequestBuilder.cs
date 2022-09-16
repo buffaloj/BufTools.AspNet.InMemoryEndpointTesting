@@ -12,6 +12,7 @@ namespace AspTestFramework
         private HttpClient _client;
         private readonly string _uri;
         private readonly Dictionary<string, string> _headers = new Dictionary<string, string>();
+        private readonly Dictionary<string, string?> _queryParams = new Dictionary<string, string?>();
 
         private HttpContent? _content;
         private string? _contentType;
@@ -46,6 +47,18 @@ namespace AspTestFramework
             return this;
         }
 
+        public RequestBuilder WithQueryParam<T>(string name, T value)
+        {
+            _queryParams[name] = value?.ToString();
+            return this;
+        }
+
+        public RequestBuilder WithQueryParam(string name)
+        {
+            _queryParams[name] = null;
+            return this;
+        }
+
         public Task<HttpResponseMessage> GetAsync()
         {
             return SendRequestAsync(HttpMethod.Get);
@@ -68,7 +81,9 @@ namespace AspTestFramework
 
         private async Task<HttpResponseMessage> SendRequestAsync(HttpMethod verb)
         {
-            using (var request = new HttpRequestMessage(verb, _uri))
+            var uri = _uri.WithQueryParams(_queryParams);
+
+            using (var request = new HttpRequestMessage(verb, uri))
             {
                 if (_content != null && !string.IsNullOrWhiteSpace(_contentType))
                 {
