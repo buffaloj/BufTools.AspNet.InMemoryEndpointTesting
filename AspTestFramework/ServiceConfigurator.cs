@@ -6,15 +6,31 @@ using System.Linq;
 
 namespace AspTestFramework
 {
+    /// <summary>
+    /// A class used by the <see cref="Browser"/> to configure the injected services
+    /// </summary>
     internal class ServiceConfigurator : IServiceConfigurator
     {
         private readonly IServiceCollection _services;
 
+        /// <summary>
+        /// Constructs an intance of an object
+        /// </summary>
+        /// <param name="services">A collection of services used dependency injection</param>
+        /// <exception cref="ArgumentNullException"></exception>
         public ServiceConfigurator(IServiceCollection services)
         {
             _services = services ?? throw new ArgumentNullException(nameof(services));
         }
 
+        /// <summary>
+        /// Replaces an existing service registration with a new one
+        /// </summary>
+        /// <typeparam name="T">The type of the dependency</typeparam>
+        /// <param name="instance">The object to register for injection</param>
+        /// <returns>An <see cref="IServiceConfigurator"/> instance for chaining</returns>
+        /// <exception cref="DependencyNotRegisteredException">Thrown when a dependency is supplied to replace a dependency that was not registered in the application itself</exception>
+        /// <exception cref="NotImplementedException">Thrown if a new ServiceLifetime type has been added but is not supported by this method</exception>
         public IServiceConfigurator UseDependency<T>(T instance)
             where T : class
         {

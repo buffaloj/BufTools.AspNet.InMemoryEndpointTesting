@@ -3,6 +3,9 @@ using System.Text;
 
 namespace AspTestFramework
 {
+    /// <summary>
+    /// A set of extension methods for a URI
+    /// </summary>
     public static class UriExtensions
     {
         public static string WithQueryParams(this string uri, IDictionary<string, string?> queryParams)
