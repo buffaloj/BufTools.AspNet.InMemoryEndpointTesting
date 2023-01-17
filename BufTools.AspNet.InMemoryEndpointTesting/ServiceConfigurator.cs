@@ -1,4 +1,4 @@
-﻿using BufTools.AspNet.TestFramework.Resources;
+﻿using BufTools.AspNet.InMemoryEndpointTesting.Resources;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;

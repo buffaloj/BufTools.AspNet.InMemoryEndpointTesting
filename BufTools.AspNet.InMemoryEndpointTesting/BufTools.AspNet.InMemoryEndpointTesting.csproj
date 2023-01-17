@@ -1,15 +1,51 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFrameworks>netcoreapp3.1;net6.0;net7.0</TargetFrameworks>
     <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Authors>Jeremy Shull</Authors>
+    <Description>This lets you easily startup your ASP WebApi in-memory from a unit test, call endpoints, and get the response back to Assert on. It allows injecting mocks, is ultra fast, and all with two lines of code!</Description>
+    <Copyright>Copyright (c) Jeremy Shull, 2023</Copyright>
+    <PackageProjectUrl>https://github.com/buffaloj/AspTestFramework</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/buffaloj/AspTestFramework</RepositoryUrl>
+    <PackageTags>mstest;xunit;nunit;testing;test;asp;aspnet</PackageTags>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="6.0.9" />
-    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="6.0.9" />
-    <PackageReference Include="Microsoft.TestPlatform.TestHost" Version="17.3.1" />
+    <None Include="..\icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.TestPlatform.TestHost" Version="17.4.1" />
+  </ItemGroup>
+  
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net7.0' ">
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="7.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="7.0.2" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="6.0.13" />
+    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="6.0.13" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.1' ">
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="3.1.32" />
+    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="3.1.32" />
+  </ItemGroup>
+
+
 
   <ItemGroup>
     <Compile Update="Resources\FrameworkResources.Designer.cs">

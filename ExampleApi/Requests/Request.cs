@@ -1,12 +1,15 @@
 ﻿namespace ExampleApi.Requests
 {
+    /// <summary>
+    /// An example of a request
+    /// </summary>
     public class Request
     {
         /// <summary>
         /// A string that was to be returned via an endpoint
         /// </summary>
         /// <example>Example String!</example>
-        public string StringToReturn {  get; set; }
+        public string? StringToReturn {  get; set; }
 
         /// <summary>
         /// Provides an example of a <see cref="Request"/> with properties with in with example values
