@@ -75,7 +75,11 @@ namespace ExampleApi.Tests
         public async Task CallExampleEndpoint_WithDeleteRequest_ReturnsDependencyValue()
         {
             _mock.Setup(m => m.GetExampleText()).Returns(_testText);
-            var browser = new Browser<Program>(c => c.UseDependency(_mock.Object));
+            var browser = new Browser<Program>(c =>
+            {
+                c.UseDependency(_mock.Object);
+                c.UseDependency(_mock.Object);
+            });
 
             var response = await browser.CreateRequest("/api/v1/example").DeleteAsync();
             var message = await response.Content.ReadAsStringAsync();

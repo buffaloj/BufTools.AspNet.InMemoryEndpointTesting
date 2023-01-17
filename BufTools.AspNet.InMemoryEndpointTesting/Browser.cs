@@ -14,7 +14,14 @@ namespace BufTools.AspNet.TestFramework
         private readonly HttpClient _client;
 
         /// <summary>
-        /// Constructs an instance of a browser class
+        /// Constructs an instance of a browser class with no mocks to inject
+        /// </summary>
+        public Browser() : this(c => { })
+        {
+        }
+
+        /// <summary>
+        /// Constructs an instance of a browser class that accepts dependencies for injection (like a mock)
         /// </summary>
         /// <param name="action">Used to supply custom dependencies to use over normal app dependencies</param>
         public Browser(Action<IServiceConfigurator> action)

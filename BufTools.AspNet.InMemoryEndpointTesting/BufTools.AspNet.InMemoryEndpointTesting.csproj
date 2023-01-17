@@ -13,10 +13,15 @@
     <PackageTags>mstest;xunit;nunit;testing;test;asp;aspnet</PackageTags>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <DocumentationFile />
+    <Version>1.0.1</Version>
+    <AssemblyVersion>1.0.1</AssemblyVersion>
+    <FileVersion>1.0.1</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\icon.png">
+    <None Include="Resources\icon.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
