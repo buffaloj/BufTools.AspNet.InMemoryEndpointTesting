@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 
-namespace AspTestFramework
+namespace BufTools.AspNet.TestFramework
 {
     /// <summary>
     /// A set of extension methods for a URI

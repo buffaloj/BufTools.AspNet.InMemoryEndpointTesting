@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AspTestFramework\AspTestFramework.csproj" />
+    <ProjectReference Include="..\AspTestFramework\BufTools.AspNet.InMemoryEndpointTesting.csproj" />
     <ProjectReference Include="..\ExampleApi\ExampleApi.csproj" />
   </ItemGroup>
 

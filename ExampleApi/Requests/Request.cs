@@ -5,6 +5,7 @@
         /// <summary>
         /// A string that was to be returned via an endpoint
         /// </summary>
+        /// <example>Example String!</example>
         public string StringToReturn {  get; set; }
 
         /// <summary>

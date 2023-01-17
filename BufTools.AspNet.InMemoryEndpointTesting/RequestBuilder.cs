@@ -5,7 +5,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AspTestFramework
+namespace BufTools.AspNet.TestFramework
 {
     /// <summary>
     /// Builds an HTTP request to be sent to an application endpoint

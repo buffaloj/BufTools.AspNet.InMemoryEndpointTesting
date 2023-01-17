@@ -1,10 +1,9 @@
-﻿using AspTestFramework.Exceptions;
-using AspTestFramework.Resources;
+﻿using BufTools.AspNet.TestFramework.Resources;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
 
-namespace AspTestFramework
+namespace BufTools.AspNet.TestFramework
 {
     /// <summary>
     /// A class used by the <see cref="Browser"/> to configure the injected services
@@ -29,7 +28,7 @@ namespace AspTestFramework
         /// <typeparam name="T">The type of the dependency</typeparam>
         /// <param name="instance">The object to register for injection</param>
         /// <returns>An <see cref="IServiceConfigurator"/> instance for chaining</returns>
-        /// <exception cref="DependencyNotRegisteredException">Thrown when a dependency is supplied to replace a dependency that was not registered in the application itself</exception>
+        /// <exception cref="DependencyNotRegistered">Thrown when a dependency is supplied to replace a dependency that was not registered in the application itself</exception>
         /// <exception cref="NotImplementedException">Thrown if a new ServiceLifetime type has been added but is not supported by this method</exception>
         public IServiceConfigurator UseDependency<T>(T instance)
             where T : class
@@ -37,7 +36,7 @@ namespace AspTestFramework
             var descriptorToRemove = _services.FirstOrDefault(d => d.ServiceType == typeof(T));
             if (descriptorToRemove == null)
             {
-                throw new DependencyNotRegisteredException(string.Format(FrameworkResources.DependencyNotRegisteredFormat, typeof(T).FullName));
+                throw new DependencyNotRegistered(string.Format(FrameworkResources.DependencyNotRegisteredFormat, typeof(T).FullName));
             }
             _services.Remove(descriptorToRemove);
 

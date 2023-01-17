@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AspTestFramework.Resources {
+namespace BufTools.AspNet.InMemoryEndpointTesting.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace AspTestFramework.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AspTestFramework.Resources.FrameworkResources", typeof(FrameworkResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BufTools.AspNet.InMemoryEndpointTesting.Resources.FrameworkResources", typeof(FrameworkResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

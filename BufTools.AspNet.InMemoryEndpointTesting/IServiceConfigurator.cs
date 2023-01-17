@@ -1,4 +1,4 @@
-﻿namespace AspTestFramework
+﻿namespace BufTools.AspNet.TestFramework
 {
     public interface IServiceConfigurator
     {

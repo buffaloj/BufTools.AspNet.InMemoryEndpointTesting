@@ -2,7 +2,7 @@
 using System;
 using System.Net.Http;
 
-namespace AspTestFramework
+namespace BufTools.AspNet.TestFramework
 {
     /// <summary>
     /// A class that allows calling endpoints in an ASP application from a unit test and overriding dependency injection registrations with Mocks.

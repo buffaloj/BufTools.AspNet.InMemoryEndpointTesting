@@ -1,4 +1,4 @@
-﻿using AspTestFramework;
+﻿using BufTools.AspNet.TestFramework;
 using ExampleApi.Requests;
 using ExampleApi.Responses;
 using ExampleApi.Services;

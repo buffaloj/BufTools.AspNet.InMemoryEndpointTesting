@@ -1,4 +1,7 @@
+using ExampleApi.Requests;
 using ExampleApi.Services;
+using Microsoft.Extensions.PlatformAbstractions;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,7 +11,13 @@ builder.Services.AddScoped(typeof(IExampleService), typeof(ExampleService));
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+
+var basePath = PlatformServices.Default.Application.ApplicationBasePath;
+var fileName = typeof(Request).GetTypeInfo().Assembly.GetName().Name + ".xml";
+var XmlCommentsFilePath = Path.Combine(basePath, fileName);
+builder.Services.AddSwaggerGen(options => {
+    options.IncludeXmlComments(XmlCommentsFilePath);
+});
 
 var app = builder.Build();
 
