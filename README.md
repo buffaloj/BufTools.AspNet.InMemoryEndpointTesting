@@ -32,6 +32,14 @@ Options are:
 - Program : choose this if not using a Startup.cs file
 - Startup : chose this if using a Startup.cs file
 
+*** If using minimal hosting model(ie, Program instead of Startup), then you must make the Program class accessible by the Test project.  Do so by adding this the .csproj file of the application under test:
+
+```xml
+  <ItemGroup>
+    <InternalsVisibleTo Include="YourApi.Tests" />
+  </ItemGroup>
+```
+
 2. Inject dependencies
 
 Use the configurator to inject classes in place of those thave have already been registered to act as replacements.
