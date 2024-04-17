@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace BufTools.AspNet.TestFramework
@@ -101,39 +102,39 @@ namespace BufTools.AspNet.TestFramework
         /// Sends tee request as a GET request
         /// </summary>
         /// <returns>A <see cref="RequestBuilder"/> instance for chaining</returns>
-        public Task<HttpResponseMessage> GetAsync()
+        public Task<HttpResponseMessage> GetAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return SendRequestAsync(HttpMethod.Get);
+            return SendRequestAsync(HttpMethod.Get, cancellationToken);
         }
 
         /// <summary>
         /// Sends tee request as a PUT request
         /// </summary>
         /// <returns>A <see cref="RequestBuilder"/> instance for chaining</returns>
-        public Task<HttpResponseMessage> PutAsync()
+        public Task<HttpResponseMessage> PutAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return SendRequestAsync(HttpMethod.Put);
+            return SendRequestAsync(HttpMethod.Put, cancellationToken);
         }
 
         /// <summary>
         /// Sends tee request as a POST request
         /// </summary>
         /// <returns>A <see cref="RequestBuilder"/> instance for chaining</returns>
-        public Task<HttpResponseMessage> PostAsync()
+        public Task<HttpResponseMessage> PostAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return SendRequestAsync(HttpMethod.Post);
+            return SendRequestAsync(HttpMethod.Post, cancellationToken);
         }
 
         /// <summary>
         /// Sends tee request as a DELETE request
         /// </summary>
         /// <returns>A <see cref="RequestBuilder"/> instance for chaining</returns>
-        public Task<HttpResponseMessage> DeleteAsync()
+        public Task<HttpResponseMessage> DeleteAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return SendRequestAsync(HttpMethod.Delete);
+            return SendRequestAsync(HttpMethod.Delete, cancellationToken);
         }
 
-        private async Task<HttpResponseMessage> SendRequestAsync(HttpMethod verb)
+        private async Task<HttpResponseMessage> SendRequestAsync(HttpMethod verb, CancellationToken cancellationToken = default(CancellationToken))
         {
             var uri = _uri.WithQueryParams(_queryParams);
 
@@ -148,7 +149,7 @@ namespace BufTools.AspNet.TestFramework
                 foreach (var header in _headers)
                     request.Headers.Add(header.Key, header.Value);
 
-                return await _client.SendAsync(request);
+                return await _client.SendAsync(request, cancellationToken);
             }
         }
     }

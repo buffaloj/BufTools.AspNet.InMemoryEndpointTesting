@@ -6,7 +6,7 @@ using System.Linq;
 namespace BufTools.AspNet.TestFramework
 {
     /// <summary>
-    /// A class used by the <see cref="Browser"/> to configure the injected services
+    /// A class used by the <see cref="Browser{T}"/> to configure the injected services
     /// </summary>
     internal class ServiceConfigurator : IServiceConfigurator
     {

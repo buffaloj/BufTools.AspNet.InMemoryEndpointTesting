@@ -8,6 +8,12 @@ namespace BufTools.AspNet.TestFramework
     /// </summary>
     public static class UriExtensions
     {
+        /// <summary>
+        /// Adds a query params to a uri
+        /// </summary>
+        /// <param name="uri">The URI that will is getting params added</param>
+        /// <param name="queryParams">The params to add</param>
+        /// <returns>A <see cref="string"/>containing the params</returns>
         public static string WithQueryParams(this string uri, IDictionary<string, string?> queryParams)
         {
             var sb = new StringBuilder(uri);
