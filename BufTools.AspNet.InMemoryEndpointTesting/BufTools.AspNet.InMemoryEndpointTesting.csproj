@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Authors>Jeremy Shull</Authors>
-    <Description>This lets you easily startup your ASP WebApi in-memory from a unit test, call endpoints, and get the response back to Assert on. It allows injecting mocks, is ultra fast, and all with two lines of code!</Description>
+    <Description>This lets you startup your ASP WebApi in-memory from a unit test, call endpoints, and get the response back to Assert on. It allows injecting mocks, is ultra fast, and all with two lines of code!</Description>
     <Copyright>Copyright (c) Jeremy Shull, 2023</Copyright>
     <PackageProjectUrl>https://github.com/buffaloj/BufTools.AspNet.InMemoryEndpointTesting</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
@@ -15,9 +15,9 @@
     <PackageIcon>icon.png</PackageIcon>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <DocumentationFile />
-    <Version>1.0.2</Version>
-    <AssemblyVersion>1.0.2</AssemblyVersion>
-    <FileVersion>1.0.2</FileVersion>
+    <Version>1.0.3</Version>
+    <AssemblyVersion>1.0.3</AssemblyVersion>
+    <FileVersion>1.0.3</FileVersion>
     <PackageReleaseNotes>Added package signing</PackageReleaseNotes>
   </PropertyGroup>
 
@@ -33,7 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.TestPlatform.TestHost" Version="17.4.1" />
+    <PackageReference Include="Microsoft.TestPlatform.TestHost" Version="17.9.0" />
   </ItemGroup>
   
   <ItemGroup Condition=" '$(TargetFramework)' == 'net7.0' ">
@@ -42,8 +42,8 @@
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="6.0.13" />
-    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="6.0.13" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="6.0.29" />
+    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="6.0.29" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.1' ">
